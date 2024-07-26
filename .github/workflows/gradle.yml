@@ -20,6 +20,9 @@ jobs:
           java-version: 17
           distribution: temurin
 
+      - name: Install dos2unix
+        run: sudo apt-get install dos2unix
+
       - name: Grant execute permission and convert EOL for gradlew
         run: |
           chmod +x ./gradlew
@@ -48,10 +51,17 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Install dos2unix
+        run: sudo apt-get install dos2unix
+
       - name: Grant execute permission and convert EOL for gradlew
         run: |
           chmod +x ./gradlew
           dos2unix ./gradlew
+
+      - name: Generate and submit dependency graph
+        uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+
 
       - name: Generate and submit dependency graph
         uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
