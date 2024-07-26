@@ -82,7 +82,33 @@ The core of our company is facilitating the validation and management of devices
 6. Send requests using Insomnia or Postman.
 
 ## Endpoints and Requests
+## Endpoint Documentation
 
+### Supplier Controller
+
+#### POST /api/v1/suppliers
+Create a new supplier.
+
+**Example:**
+
+```
+{
+    "name": "Supplier One",
+    "address": "123 Main St",
+    "phoneNumber": "123-456-7890",
+    "email": "supplier.one@example.com",
+    "website": "www.supplierone.com",
+    "industrySector": "Electronics",
+    "registrationDate": "2023-01-01"
+}
+```
+**Expected Response:**
+```
+Supplier created successfully
+```
+#### POST/api/v1/suppliers/list
+
+**Example: **
 
 ### Usage Instructions:
 1. Use Insomnia IDE to interact with the project.
