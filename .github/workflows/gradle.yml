@@ -34,13 +34,13 @@ jobs:
         run: ls -l ./gradlew
 
       - name: Build and clean project
-        run: ./gradlew clean build --stacktrace --info
+        run: ./gradlew clean build --warning-mode all --stacktrace --info
 
       - name: Run all tests
-        run: ./gradlew test
+        run: ./gradlew test --stacktrace --info
 
       - name: Create .jar and install
-        run: ./gradlew bootJar
+        run: ./gradlew bootJar --stacktrace --info
 
   dependency-submission:
     runs-on: ubuntu-latest
@@ -71,7 +71,6 @@ jobs:
 
       - name: Generate and submit dependency graph
         uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
-
 
 
 
