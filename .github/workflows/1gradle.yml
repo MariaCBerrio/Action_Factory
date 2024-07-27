@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: temurin
+          distribution: temurin   
       - name: Install dos2unix
         run: |
           sudo apt-get update
@@ -28,6 +28,7 @@ jobs:
         run: chmod +x ./gradlew 
       - name: List files in the directory
         run: ls -l
+        
       - name: build and clean project
         run: chmod +x ./gradlew && ./gradlew clean
       - name: run all tests
