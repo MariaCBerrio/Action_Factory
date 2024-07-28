@@ -3,6 +3,7 @@ package com.IntegrativeProject.ActionFactory.service;
 import com.IntegrativeProject.ActionFactory.model.Employee;
 import com.IntegrativeProject.ActionFactory.model.Role;
 import com.IntegrativeProject.ActionFactory.model.Supplier;
+import com.IntegrativeProject.ActionFactory.repository.EmployeeRepository;
 import com.IntegrativeProject.ActionFactory.repository.SupplierRepository;
 import com.IntegrativeProject.ActionFactory.Exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -18,9 +20,12 @@ public class SupplierService {
     private final SupplierRepository supplierRepository;
 
     @Autowired
-    public SupplierService(SupplierRepository supplierRepository){
+    public SupplierService(SupplierRepository supplierRepository, EmployeeRepository employeeRepository){
         this.supplierRepository = supplierRepository;
     }
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     public void createSupplier(Supplier supplier) {
         validateSupplier(supplier);
@@ -108,6 +113,18 @@ public class SupplierService {
         if (supplier.getRegistrationDate() == null || supplier.getRegistrationDate().isBefore(LocalDate.of(2000, 1, 1))
                 || supplier.getRegistrationDate().isAfter(LocalDate.of(2024, 8, 1))) {
             throw new ApiRequestException("Registration date not valid, check field");
+        }
+        if (supplier.getEmployee() == null || supplier.getEmployee().getId() == null) {
+            throw new ApiRequestException("Employee not valid, check field");
+        }
+        Optional<Employee> optionalEmployee = employeeRepository.findById(supplier.getEmployee().getId());
+        if (!optionalEmployee.isPresent()) {
+            throw new ApiRequestException("Employee does not exist");
+        }
+
+        Employee employee = optionalEmployee.get();
+        if (employee.getRole() == null || !Objects.equals(employee.getRole().getName(), "Coordinator")) {
+            throw new ApiRequestException("Employee must have a Coordinator Role");
         }
     }
 

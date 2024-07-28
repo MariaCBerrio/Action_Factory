@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "supplier")
-public class Supplier {
+public class  Supplier  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,8 +36,12 @@ public class Supplier {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
-    @OneToMany(mappedBy = "supplier", cascade = {CascadeType.ALL}, orphanRemoval = true
-    )
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    private Employee employee;
+
+
+    @OneToMany(mappedBy = "supplier", cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Device> devices = new ArrayList();
 
 
@@ -48,7 +52,7 @@ public class Supplier {
         this.id = id;
     }
 
-    public Supplier(Long id, String name, String address, String phoneNumber, String email, String website, String industrySector, LocalDate registrationDate) {
+    public Supplier(Long id, String name, String address, String phoneNumber, String email, String website, String industrySector, LocalDate registrationDate, Employee employee) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -57,9 +61,10 @@ public class Supplier {
         this.website = website;
         this.industrySector = industrySector;
         this.registrationDate = registrationDate;
+        this.employee = employee;
     }
 
-    public Supplier(String name, String address, String phoneNumber, String email, String website, String industrySector, LocalDate registrationDate) {
+    public Supplier(String name, String address, String phoneNumber, String email, String website, String industrySector, LocalDate registrationDate, Employee employee) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -67,6 +72,7 @@ public class Supplier {
         this.website = website;
         this.industrySector = industrySector;
         this.registrationDate = registrationDate;
+        this.employee = employee;
     }
 
     public Long getId() {
@@ -131,6 +137,18 @@ public class Supplier {
 
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public List<Device> getDevices() {
+        return devices;
     }
 }
 
