@@ -82,7 +82,6 @@ The core of our company is facilitating the validation and management of devices
 6. Send requests using Insomnia or Postman.
 
 ## Endpoints and Requests
-## Endpoint Documentation
 
 ### Supplier Controller
 
@@ -136,11 +135,9 @@ Supplier created successfully
 - GitHub project management.
 
 ## Authors
-- Maria Camila Berrío
-- Eimy García
-- Angie Guevara
-- David Herrera
-
-## License
+- Angie Guevara: https://www.linkedin.com/in/angie-guevara-developer/
+- Eimy Garcia: https://www.linkedin.com/in/eimy-garcia-backend/
+- Maria Camila Berrio: http://www.linkedin.com/in/maria-camila-berrio-alzate
+- David Herrera: https://www.linkedin.com/in/david-herrera-back-developer/
 
 
