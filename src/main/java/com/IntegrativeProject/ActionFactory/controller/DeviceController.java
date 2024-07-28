@@ -2,7 +2,7 @@ package com.IntegrativeProject.ActionFactory.controller;
 
 import com.IntegrativeProject.ActionFactory.Exceptions.ApiRequestException;
 import com.IntegrativeProject.ActionFactory.model.Device;
-import com.IntegrativeProject.ActionFactory.service.DeviceServiceImpl;
+import com.IntegrativeProject.ActionFactory.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class DeviceController {
 
     @Autowired
-    private DeviceServiceImpl deviceServiceImpl;
+    private DeviceService deviceServiceImpl;
 
     @PostMapping("/csv/upload")
     public ResponseEntity<String> uploadDevice(@RequestParam("file") MultipartFile file) {
