@@ -136,9 +136,9 @@ Supplier created successfully
 - GitHub project management.
 
 ## Authors
+- Maria Camila Berrío
+- Eimy García
 - Angie Guevara
-- Eimy Garcia
-- Maria Camila Berrio
 - David Herrera
 
 ## License
