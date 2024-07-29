@@ -106,6 +106,67 @@ Create a new supplier.
 Supplier created successfully
 ```
 #### POST/api/v1/suppliers/list
+With this api we can update a list of suppliers.
+**Example: **
+```
+[{
+	"name": "Supplier One",
+	"address": "123 Main St",
+	"phoneNumber": "123-456-7890",
+	"email": "supplier.one@example.com",
+	"website": "www.supplierone.com",
+	"industrySector": "Electronics",
+	"registrationDate": "2023-01-01",
+	"employee": {
+    	"id": 2
+  }
+},
+
+{
+	"name": "Gadget Distributors",
+	"address": "456 Gadget Lane",
+	"phoneNumber": "987-654-3210",
+	"email": "info@gadgetdistributors.com",
+	"website": "www.gadgetdistributors.com",
+	"industrySector": "Electronics",
+	"registrationDate": "2023-02-15",
+	"employee": {
+    	"id": 2
+  	}
+},
+
+ {
+	"name": "Component World",
+	"address": "789 Component Ave",
+	"phoneNumber": "555-123-4567",
+	"email": "support@componentworld.com",
+	"website": "www.componentworld.com",
+	"industrySector": "Hardware",
+	"registrationDate": "2023-03-10",
+	"employee": {
+   	"id": 4
+}
+},
+
+ {
+	"name": "Device Experts",
+	"address": "987 Device Blvd",
+	"phoneNumber": "222-333-4444",
+	"email": "info@deviceexperts.com",
+	"website": "www.deviceexperts.com",
+	"industrySector": "Electronics",
+	"registrationDate": "2023-05-30",
+	"employee": {
+    	"id": 4
+  }
+}]
+
+```
+**Expected Response:**
+```
+Suppliers created successfully
+```
+#### GET/api/v1/suppliers/{id}
 
 **Example: **
 
