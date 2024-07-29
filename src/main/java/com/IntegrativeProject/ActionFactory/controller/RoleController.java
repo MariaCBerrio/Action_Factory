@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -20,13 +19,24 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<String> createRole(@RequestBody Role role){
-        this.roleService.createRole(role);
-        return  ResponseEntity.ok("Role created");
+        roleService.createRole(role);
+        return ResponseEntity.ok("Role created");
     }
-    @GetMapping()
+
+    @GetMapping
     public List<Role> seeRoles(){
-        return  this.roleService.seeRoles();
+        return roleService.seeRoles();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteRoleById(@PathVariable Long id){
+        try {
+            roleService.deleteRoleById(id);
+            return ResponseEntity.ok("Role deleted");
+        } catch (RoleService.RoleNotFoundException e) {
+            return ResponseEntity.status(404).body(e.getMessage());
+        }
     }
 }
