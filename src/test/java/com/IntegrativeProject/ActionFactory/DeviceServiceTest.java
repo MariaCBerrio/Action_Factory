@@ -1,12 +1,9 @@
 package com.IntegrativeProject.ActionFactory;
 
 import com.IntegrativeProject.ActionFactory.Exceptions.ApiRequestException;
-import com.IntegrativeProject.ActionFactory.model.Device;
-import com.IntegrativeProject.ActionFactory.model.InvalidDevice;
-import com.IntegrativeProject.ActionFactory.model.Supplier;
-import com.IntegrativeProject.ActionFactory.model.ValidDevice;
+import com.IntegrativeProject.ActionFactory.model.*;
 import com.IntegrativeProject.ActionFactory.repository.*;
-import com.IntegrativeProject.ActionFactory.service.DeviceServiceImpl;
+import com.IntegrativeProject.ActionFactory.service.DeviceService;
 import com.IntegrativeProject.ActionFactory.util.CsvUtility;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,13 +23,8 @@ import static org.mockito.Mockito.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
-@ExtendWith(MockitoExtension.class)
+@SuppressWarnings("unchecked")
 public class DeviceServiceTest {
-
-    @InjectMocks
-    private DeviceServiceImpl deviceService;
 
     @Mock
     private DeviceRepository deviceRepository;
@@ -49,35 +41,13 @@ public class DeviceServiceTest {
     @Mock
     private ValidDeviceRepository validDeviceRepository;
 
-
-    private Device device1;
-    private Device device2;
-    private Device device3;
+    @InjectMocks
+    private DeviceService deviceService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         MockitoAnnotations.openMocks(this);
-        // Initialize devices
-        device1 = new Device();
-        device1.setImei(123456789012345L);
-        device1.setSupplier(new Supplier(1L));
-        device1.setStatus("READY_TO_USE");
-        device1.setScore(70);
-
-        device2 = new Device();
-        device2.setImei(987654321098765L);
-        device2.setSupplier(new Supplier(2L));
-        device2.setStatus("READY_TO_USE");
-        device2.setScore(50);
-
-        device3 = new Device();
-        device3.setImei(123456789098765L);
-        device3.setSupplier(new Supplier(3L));
-        device3.setStatus("CANCELLED");
-        device3.setScore(80);
     }
-    
-
 
     @Test
     public void testUploadDevicesEmptyFile() {
@@ -107,21 +77,50 @@ public class DeviceServiceTest {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void testProcessAndSaveDevices() throws Exception {
+        // Paso 1: Configura los objetos de prueba
+        Employee employee1 = new Employee();
+        employee1.setId(1L);
+        employee1.setIdentificationCard(123456L);
+        Device device1 = new Device();
+        device1.setImei(123456789012345L);
+        device1.setEmployee(employee1);
+        device1.setStatus("NEW");
+
+        Employee employee2 = new Employee();
+        employee2.setId(2L);
+        employee2.setIdentificationCard(654321L);
+        Device device2 = new Device();
+        device2.setImei(123456789098765L);
+        device2.setEmployee(employee2);
+        device2.setStatus("USED");
+
+        Employee employee3 = new Employee();
+        employee3.setId(3L);
+        employee3.setIdentificationCard(987654L);
+        Device device3 = new Device();
+        device3.setImei(987654321098765L);
+        device3.setEmployee(employee3);
+        device3.setStatus("NEW");
+
         List<Device> deviceList = Arrays.asList(device1, device2, device3);
 
-        when(supplierRepository.existsById(1L)).thenReturn(true);
-        when(supplierRepository.existsById(2L)).thenReturn(true);
-        when(supplierRepository.existsById(3L)).thenReturn(true);
+        // Paso 2: Configura los mocks
+        when(supplierRepository.existsById(anyLong())).thenReturn(true);
+        when(employeeRepository.findById(anyLong())).thenReturn(Optional.of(new Employee()));
 
-        Method processAndSaveDevicesMethod = DeviceServiceImpl.class.getDeclaredMethod("processAndSaveDevices", List.class);
+        // Paso 3: Invoca el método a probar utilizando reflexión
+        Method processAndSaveDevicesMethod = DeviceService.class.getDeclaredMethod("processAndSaveDevices", List.class);
         processAndSaveDevicesMethod.setAccessible(true);
         processAndSaveDevicesMethod.invoke(deviceService, deviceList);
 
-        ArgumentCaptor<List<Device>> deviceListCaptor = ArgumentCaptor.forClass(List.class);
+        // Paso 4: Captura y verifica los argumentos
+        ArgumentCaptor<List<Device>> deviceListCaptor = ArgumentCaptor.forClass((Class<List<Device>>) (Class<?>) List.class);
         verify(deviceRepository, times(1)).saveAll(deviceListCaptor.capture());
 
+        // Verifica que la lista capturada es la esperada
         List<Device> capturedDeviceList = deviceListCaptor.getValue();
         assertEquals(deviceList.size(), capturedDeviceList.size());
         assertTrue(capturedDeviceList.containsAll(deviceList));
@@ -129,43 +128,72 @@ public class DeviceServiceTest {
 
     @Test
     public void testValidateDevices() {
-        List<Device> sortedDeviceList = new ArrayList<>();
-        Device device1 = new Device();
-        device1.setImei(123456789012345L);
-        device1.setSupplier(new Supplier(1L));
-        device1.setStatus("READY_TO_USE");
-        device1.setScore(70);
-        sortedDeviceList.add(device1);
+        // Step 1: Set up test objects
+        Employee activeEmployee = new Employee();
+        activeEmployee.setId(1L);
+        activeEmployee.setStatus("Active");
+        activeEmployee.setIdentificationCard(123456L);
 
-        Device device2 = new Device();
-        device2.setImei(987654321098765L);
-        device2.setSupplier(new Supplier(1L));
-        device2.setStatus("READY_TO_USE");
-        device2.setScore(50);
-        sortedDeviceList.add(device2);
+        Employee inactiveEmployee = new Employee();
+        inactiveEmployee.setId(2L);
+        inactiveEmployee.setStatus("Inactive");
+        inactiveEmployee.setIdentificationCard(654321L);
 
-        Device device3 = new Device();
-        device3.setImei(123456789098765L);
-        device3.setSupplier(new Supplier(1L));
-        device3.setStatus("CANCELLED");
-        device3.setScore(80);
-        sortedDeviceList.add(device3);
+        Supplier validSupplier = new Supplier();
+        validSupplier.setId(1L);
+        validSupplier.setName("Valid Supplier");
 
+        // Valid device
+        Device validDevice = new Device();
+        validDevice.setImei(123456789012345L);
+        validDevice.setEmployee(activeEmployee);
+        validDevice.setStatus("READY_TO_USE");
+        validDevice.setScore(70);
+        validDevice.setSupplier(validSupplier);
+
+        // Invalid device due to score
+        Device invalidDeviceDueToScore = new Device();
+        invalidDeviceDueToScore.setImei(123456789098765L);
+        invalidDeviceDueToScore.setEmployee(activeEmployee);
+        invalidDeviceDueToScore.setStatus("READY_TO_USE");
+        invalidDeviceDueToScore.setScore(50);
+        invalidDeviceDueToScore.setSupplier(validSupplier);
+
+        // Invalid device due to palindrome IMEI
+        Device invalidDeviceDueToPalindrome = new Device();
+        invalidDeviceDueToPalindrome.setImei(12345654321L);
+        invalidDeviceDueToPalindrome.setEmployee(activeEmployee);
+        invalidDeviceDueToPalindrome.setStatus("READY_TO_USE");
+        invalidDeviceDueToPalindrome.setScore(80);
+        invalidDeviceDueToPalindrome.setSupplier(validSupplier);
+
+        // List of devices
+        List<Device> sortedDeviceList = Arrays.asList(validDevice, invalidDeviceDueToScore, invalidDeviceDueToPalindrome);
         List<ValidDevice> validDeviceList = new ArrayList<>();
         List<InvalidDevice> invalidDeviceList = new ArrayList<>();
 
-        when(supplierRepository.existsById(anyLong())).thenReturn(true);
+        // Step 2: Set up mocks
+        when(employeeRepository.findById(1L)).thenReturn(Optional.of(activeEmployee));
+        when(employeeRepository.findById(2L)).thenReturn(Optional.of(inactiveEmployee));
+        when(supplierRepository.existsById(1L)).thenReturn(true); // Valid supplier
+        when(supplierRepository.existsById(2L)).thenReturn(false); // Invalid supplier for tests
 
+        // Step 3: Invoke the method under test
         deviceService.validateDevices(sortedDeviceList, validDeviceList, invalidDeviceList);
 
-        // Verificar el contenido de las listas
-        assertEquals(1, validDeviceList.size(), "El tamaño de la lista de dispositivos válidos no es el esperado");
-        assertEquals(2, invalidDeviceList.size(), "El tamaño de la lista de dispositivos inválidos no es el esperado");
+        // Step 4: Verify results
+        assertEquals(1, validDeviceList.size(), "The size of the valid devices list is not as expected");
+        assertEquals(2, invalidDeviceList.size(), "The size of the invalid devices list is not as expected");
 
-        // Verificar que los dispositivos correctos están en las listas
-        assertTrue(validDeviceList.stream().anyMatch(vd -> vd.getDevice().getImei().equals(device1.getImei())), "El dispositivo válido no se encuentra en la lista");
-        assertTrue(invalidDeviceList.stream().anyMatch(id -> id.getDevice().getImei().equals(device2.getImei())), "El dispositivo inválido con score bajo no se encuentra en la lista");
-        assertTrue(invalidDeviceList.stream().anyMatch(id -> id.getDevice().getImei().equals(device3.getImei())), "El dispositivo inválido con status CANCELLED no se encuentra en la lista");
+        // Verify that the valid device is in the valid devices list
+        assertTrue(validDeviceList.stream()
+                .anyMatch(vd -> vd.getDevice().getImei() == 123456789012345L), "The valid device is not in the list of valid devices");
+
+        // Verify that the invalid devices are in the invalid devices list
+        assertTrue(invalidDeviceList.stream()
+                .anyMatch(id -> id.getDevice().getImei() == 123456789098765L), "The device invalid due to score is not in the list of invalid devices");
+        assertTrue(invalidDeviceList.stream()
+                .anyMatch(id -> id.getDevice().getImei() == 12345654321L), "The device invalid due to palindrome IMEI is not in the list of invalid devices");
     }
 
 
