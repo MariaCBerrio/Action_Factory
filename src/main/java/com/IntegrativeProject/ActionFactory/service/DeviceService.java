@@ -167,6 +167,8 @@ public class DeviceService {
                 continue;
             }
             switch (device.getStatus()) {
+                case "READY_TO_USE":
+                    break;
                 case "NEW":
                 case "USED":
                     device.setStatus("READY_TO_USE");
