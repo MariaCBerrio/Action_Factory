@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.IntegrativeProject.ActionFactory.DeviceServiceTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2024-07-28T23:22:55" hostname="DESKTOP-11GK06T" time="2.116">
+<testsuite name="com.IntegrativeProject.ActionFactory.DeviceServiceTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2024-07-29T15:59:30" hostname="DESKTOP-11GK06T" time="2.256">
   <properties/>
-  <testcase name="testFindAll()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="1.855"/>
-  <testcase name="testUploadDevicesEmptyFile()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.014"/>
-  <testcase name="testGetDeviceByImeiNotFound()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.018"/>
-  <testcase name="testUploadDevicesInvalidFormat()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.062"/>
-  <testcase name="testDeleteDeviceByImei()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.03"/>
-  <testcase name="testGetDeviceByImei()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.009"/>
-  <testcase name="testGetDevicesBySupplierNotFound()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.017"/>
-  <testcase name="testDeleteDeviceByImeiNotFound()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.013"/>
-  <testcase name="testProcessAndSaveDevices()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.039"/>
-  <testcase name="testGetDevicesBySupplier()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.01"/>
-  <testcase name="testValidateDevices()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.019"/>
-  <system-out><![CDATA[18:22:57.385 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789012345 will enter verification process.
-18:22:57.399 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789098765 will enter verification process.
-18:22:57.399 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 987654321098765 will enter verification process.
-18:22:57.399 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
-18:22:57.403 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
-18:22:57.403 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
-18:22:57.430 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789012345 has been successfully validated
-18:22:57.436 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789098765 has a score less than or equal to 60
-18:22:57.440 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 12345654321 has an IMEI palindrome
+  <testcase name="testFindAll()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="1.943"/>
+  <testcase name="testUploadDevicesEmptyFile()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.026"/>
+  <testcase name="testGetDeviceByImeiNotFound()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.027"/>
+  <testcase name="testUploadDevicesInvalidFormat()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.072"/>
+  <testcase name="testDeleteDeviceByImei()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.032"/>
+  <testcase name="testGetDeviceByImei()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.014"/>
+  <testcase name="testGetDevicesBySupplierNotFound()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.019"/>
+  <testcase name="testDeleteDeviceByImeiNotFound()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.02"/>
+  <testcase name="testProcessAndSaveDevices()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.04"/>
+  <testcase name="testGetDevicesBySupplier()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.013"/>
+  <testcase name="testValidateDevices()" classname="com.IntegrativeProject.ActionFactory.DeviceServiceTest" time="0.022"/>
+  <system-out><![CDATA[10:59:32.578 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789012345 will enter verification process.
+10:59:32.588 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789098765 will enter verification process.
+10:59:32.589 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 987654321098765 will enter verification process.
+10:59:32.590 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
+10:59:32.592 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
+10:59:32.593 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
+10:59:32.634 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789012345 has been successfully validated
+10:59:32.636 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789098765 has a score less than or equal to 60
+10:59:32.637 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 12345654321 has an IMEI palindrome
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
