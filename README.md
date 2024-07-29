@@ -82,11 +82,60 @@ The core of our company is facilitating the validation and management of devices
 6. Send requests using Insomnia or Postman.
 
 ## Endpoints and Requests
+### Role Controller
+#### Post /api/v1/roles
+This endpoint allows to create the roles in the database, since the program is designed with some specific funcionalities for the coordinator, it is recommended to define this role in the company.
+
+** Example: **
+```
+	{
+	"name": "Validator"
+	}
+```
+```
+	{
+	"name":"Coordinator"
+	}
+```
+#### Get /api/v1/roles
+This endpoint allows to get a list of the roles defined in the Company
+**Expected Response**
+```
+[
+	{
+		"id": 1,
+		"name": "Validator"
+	},
+	{
+		"id": 2,
+		"name": "Coordinator"
+	}
+]
+```
+### Employee Controller
+#### Post /api/v1/employees
+This endpoint allows to create a new employee in the company
+
+**Example: **
+```
+{
+    	"name": "John Doe",
+    	"email": "john.doe@example.com",
+    	"password": "password123",
+    	"hireDate": "2023-01-15",
+    	"lastAccess": "2023-07-15T14:30:00",
+    	"status": "active",
+    	"role": {
+        	"id": 1
+    	}
+}
+
+```
 
 ### Supplier Controller
 
 #### POST /api/v1/suppliers
-Create a new supplier.
+Create a new supplier, to be able to create a new supplier the database must already contain at least one employee object who has a coordinator role.
 
 **Example:**
 
@@ -168,8 +217,97 @@ Suppliers created successfully
 ```
 #### GET/api/v1/suppliers/{id}
 
-**Example: **
+**Example: /api/v1/suppliers/1**
 
+**Expected Response:**
+```
+{
+“id”: 1,
+	"name": "Supplier One",
+	"address": "123 Main St",
+	"phoneNumber": "123-456-7890",
+	"email": "supplier.one@example.com",
+	"website": "www.supplierone.com",
+	"industrySector": "Electronics",
+	"registrationDate": "2023-01-01"
+}
+```
+#### PUT /api/v1/suppliers/{id}
+This endpoint allows to modify specific information about a especific  supplier using his id.
+
+**Example: /api/v1/suppliers/1**
+```
+ {
+	"name": "Supplier One Modified",
+	"address": "123 new Adress",
+	"phoneNumber": "123-456-7850",
+	"email": "supplier.one@example.com",
+	"website": "www.supplierone.com",
+	"industrySector": "Electronics",
+	"registrationDate": "2023-01-01"
+
+}
+```
+**Expected Response:**
+```
+Supplier updated successfully
+```
+#### Delete /api/v1/suppliers/{id}
+This endpoint allows to delete a supplier using the id, all the related devices will also be deleted.
+
+**Example:**
+```
+/api/v1/suppliers/1
+```
+**Expected Response:**
+
+```
+Supplier deleted successfully
+```
+
+#### Get /api/v1/suppliers
+This request allows to delete get a list of all the existing suppliers
+
+**Example:**
+```
+/api/v1/suppliers
+```
+**Expected Response:**
+```
+[{
+	“id”: 2,
+	"name": "Gadget Distributors",
+	"address": "456 Gadget Lane",
+	"phoneNumber": "987-654-3210",
+	"email": "info@gadgetdistributors.com",
+	"website": "www.gadgetdistributors.com",
+	"industrySector": "Electronics",
+	"registrationDate": "2023-02-15"
+},
+
+ {
+	“id”: 3,
+	"name": "Component World",
+	"address": "789 Component Ave",
+	"phoneNumber": "555-123-4567",
+	"email": "support@componentworld.com",
+	"website": "www.componentworld.com",
+	"industrySector": "Hardware",
+	"registrationDate": "2023-03-10"
+},
+
+ {
+	“id”: 4,
+	"name": "Device Experts",
+	"address": "987 Device Blvd",
+	"phoneNumber": "222-333-4444",
+	"email": "info@deviceexperts.com",
+	"website": "www.deviceexperts.com",
+	"industrySector": "Electronics",
+	"registrationDate": "2023-05-30"
+}]
+
+```
 ### Usage Instructions:
 1. Use Insomnia IDE to interact with the project.
 2. Modify the `application.properties` file with your database details.
