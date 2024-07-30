@@ -7,16 +7,9 @@ Action Factory is being developed by a dedicated team of four as part of our bac
 ## Project Description
 Action Factory seeks to revolutionize the validation process for devices from allied providers. This automated and robust system will efficiently and accurately manage the information of business partners and devices, freeing employees from repetitive manual tasks.
 
-### Company Management:
-- **ID**: Provider ID
-- **Name**: Provider Name
-- **Address**: Provider Address
-- **Phone Number**: Provider Phone Number
-- **Email**: Provider Email
-- **Website**: Provider Website
-- **Industry Sector**: Provider Industry Sector
-- **Registration Date**: Provider Registration Date
-- **Employee Id**: Employee with coordinator role.
+## UML Diagram
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/UML_Action_Factory.drawio.png)
+
 
 ### Functionalities:
 1. **Creation and Update of Providers**: Only employees with the coordinator role can perform this action.
@@ -28,16 +21,6 @@ The system will also manage the employees of Action Factory, where employees can
 #### Roles:
 - **Coordinator**: Has the authority to add, update, and validate companies, and to execute and supervise device validations.
 - **Validator**: An expert in device validation, executing validations with precision and thoroughness.
-
-#### Employee Attributes:
-- **Employee ID**: A unique identifier for each employee in the system.
-- **Name**: The full name of the employee.
-- **Email**: The employee's email address for communication and identification.
-- **Password**: The employee's password for system authentication.
-- **Role**: The role assigned to the employee (Coordinator or Validator).
-- **Hiring Date**: The date the employee joined Action Factory.
-- **Last Access**: The date and time of the employee's last system access.
-- **Status**: The current status of the employee in the company (active, inactive, etc.).
 
 ### Validation Management:
 The core of our company is facilitating the validation and management of devices. The system must be capable of receiving CSV files sent by the provider containing device information.
