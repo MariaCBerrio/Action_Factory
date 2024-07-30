@@ -1,20 +1,15 @@
-# Action Factory
+<h1 align="center">Action Factory</h1>
 
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Portada%20Action%20Factory%20(1).png)
 ## Project Context
 Action Factory is being developed by a dedicated team of four as part of our backend bootcamp at BeTek. Our goal is to revolutionize the device validation process for allied providers by creating a robust and automated system. This project not only serves as a practical application of our learning but also aims to deliver a real-world solution to streamline and enhance operational efficiency.
 
 ## Project Description
 Action Factory seeks to revolutionize the validation process for devices from allied providers. This automated and robust system will efficiently and accurately manage the information of business partners and devices, freeing employees from repetitive manual tasks.
 
-### Company Management:
-- **ID**: Provider ID
-- **Name**: Provider Name
-- **Address**: Provider Address
-- **Phone Number**: Provider Phone Number
-- **Email**: Provider Email
-- **Website**: Provider Website
-- **Industry Sector**: Provider Industry Sector
-- **Registration Date**: Provider Registration Date
+## UML Diagram
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/UML_Action_Factory.drawio.png)
+
 
 ### Functionalities:
 1. **Creation and Update of Providers**: Only employees with the coordinator role can perform this action.
@@ -27,21 +22,11 @@ The system will also manage the employees of Action Factory, where employees can
 - **Coordinator**: Has the authority to add, update, and validate companies, and to execute and supervise device validations.
 - **Validator**: An expert in device validation, executing validations with precision and thoroughness.
 
-#### Employee Attributes:
-- **Employee ID**: A unique identifier for each employee in the system.
-- **Name**: The full name of the employee.
-- **Email**: The employee's email address for communication and identification.
-- **Password**: The employee's password for system authentication.
-- **Role**: The role assigned to the employee (Coordinator or Validator).
-- **Hiring Date**: The date the employee joined Action Factory.
-- **Last Access**: The date and time of the employee's last system access.
-- **Status**: The current status of the employee in the company (active, inactive, etc.).
-
 ### Validation Management:
 The core of our company is facilitating the validation and management of devices. The system must be capable of receiving CSV files sent by the provider containing device information.
 
 #### Device Validation:
-- Devices have the following characteristics: IMEI, STATUS, PROVIDER, SCORE, VALIDATION DATE.
+- Devices have the following characteristics: IMEI, STATUS, SCORE, VALIDATION_STATUS, VALIDATION DATE, SUPPLIER_ID, EMPLOYEE_ID.
 - Devices must be sorted in ascending order based on the IMEI when read from the CSV file.
 - Validate that the device provider exists in our database; if not, discard the validation.
 - Only validate devices with a status of "READY_TO_USE".
@@ -319,24 +304,21 @@ This request allows to delete get a list of all the existing suppliers
 - Device validation
 
 ### Technologies Used:
-- Java and Spring Framework for backend development.
-- SQL or NoSQL databases for information storage.
-- REST for web service creation.
-- UML diagrams for system design.
-- JPA for object-relational mapping.
-- Continuous Integration and Deployment with GitHub Actions and GCP or AWS.
-- JWT for user authentication and authorization.
-- Swagger for API documentation.
-- Design patterns and best practices for clean, maintainable, and scalable code.
-- Unit tests creation.
-- Cloud deployment.
-- README documentation.
-- GitHub project management.
+- **Back End Development:** Java 17 and Spring Boot Framework
+- **Database:** MySQL
+- **Continuous Integration:** GitHub Actions
+- **Continuous Deployment:** Railway 
+- **Api Documentation:** Swagger
+- **Integrated Development Environment (IDE):** IntelliJ
+- **API Testing and development platform:** Insomnia
+
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Used%20Technologies.png)
 
 ## Authors
-- Angie Guevara: https://www.linkedin.com/in/angie-guevara-developer/
-- Eimy Garcia: https://www.linkedin.com/in/eimy-garcia-backend/
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Teamwork.png)
 - Maria Camila Berrio: http://www.linkedin.com/in/maria-camila-berrio-alzate
+- Eimy Garcia: https://www.linkedin.com/in/eimy-garcia-backend/
+- Angie Guevara: https://www.linkedin.com/in/angie-guevara-developer/
 - David Herrera: https://www.linkedin.com/in/david-herrera-back-developer/
 
 
