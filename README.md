@@ -18,8 +18,8 @@ Action Factory seeks to revolutionize the validation process for devices from al
 
 ## Functionalities:
 1. **Employee Managemente:** The system will manage the employees of Action Factory, where employees can be created and assigned specific roles that allow them to perform tasks effectively and responsibly.
-3. **Creation and Update of Providers**: Only employees with the coordinator role can perform this action.
-4. **Viewing and Searching Providers**.
+3. **Creation and Update of Suppliers**: Only employees with the coordinator role can perform this action.
+4. **Device Management**.
 
 ### Roles:
 - **Coordinator**: Has the authority to add, update, and validate companies, and to execute and supervise device validations.
