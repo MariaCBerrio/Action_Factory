@@ -28,6 +28,12 @@ Action Factory seeks to revolutionize the validation process for devices from al
 ### Validation Management:
 The core of our company is facilitating the validation and management of devices. The system must be capable of receiving CSV files sent by the provider containing device information.
 
+## Entity Relationship Model
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Entity-Relationship%20Model.jpg)
+
+### Arquitecture Diagram
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Arquitechture%20Diagram.jpg)
+
 #### Device Validation:
 - Devices have the following characteristics: IMEI, STATUS, SCORE, VALIDATION_STATUS, VALIDATION DATE, SUPPLIER_ID, EMPLOYEE_ID.
 - Devices must be sorted in ascending order based on the IMEI when read from the CSV file.
@@ -354,9 +360,6 @@ This request allows to delete get a list of all the existing suppliers
 Allows to upload a csv document of devices to the database, it must be charged as a multipart file, in the project description there is already an example of csv file, it can be used.
 
 ![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Devices%20Request.png)
-
-### Arquitecture Diagram
-![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Arquitechture%20Diagram.jpg)
 
 ### Technologies Used:
 - **Back End Development:** Java 17 and Spring Boot Framework
