@@ -49,6 +49,8 @@ public class DeviceService {
         }
 
         try {
+//          Eliminación de de todos los registros actuales en la base de datos antes de la carga del archivo CSV
+            deleteAllDevices();
             List<Device> deviceList = readDevicesFromCsv(file);
             processAndSaveDevices(deviceList);
         } catch (IOException e) {
@@ -225,6 +227,8 @@ public class DeviceService {
     }
 
     public void deleteAllDevices() {
+        validDeviceRepository.deleteAll();
+        invalidDeviceRepository.deleteAll();;
         deviceRepository.deleteAll();
     }
 }

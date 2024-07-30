@@ -56,32 +56,35 @@ public class DeviceController {
     }
 
     @GetMapping("/{imei}")
-    public ResponseEntity<Device> getDeviceByImei(@PathVariable Long imei) {
+    public ResponseEntity<String> getDeviceByImei(@PathVariable Long imei) {
         try {
             Device device = deviceServiceImpl.getDeviceByImei(imei);
-            return ResponseEntity.ok(device);
+            return ResponseEntity.ok(device.toString()); // Puedes personalizar cómo convertir el dispositivo a String
         } catch (ApiRequestException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Device with IMEI " + imei + " not found.");
         }
     }
 
     @GetMapping("/supplier/{supplierId}")
-    public ResponseEntity<List<Device>> getDevicesBySupplier(@PathVariable Long supplierId) {
+    public ResponseEntity<?> getDevicesBySupplier(@PathVariable Long supplierId) {
         try {
             List<Device> devices = deviceServiceImpl.getDevicesBySupplier(supplierId);
             return ResponseEntity.ok(devices);
         } catch (ApiRequestException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Supplier with ID " + supplierId + " not found.");
         }
     }
 
     @DeleteMapping("/{imei}")
-    public ResponseEntity<Void> deleteDeviceByImei(@PathVariable Long imei) {
+    public ResponseEntity<String> deleteDeviceByImei(@PathVariable Long imei) {
         try {
             deviceServiceImpl.deleteDeviceByImei(imei);
             return ResponseEntity.noContent().build();
         } catch (ApiRequestException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Device with IMEI " + imei + " not found.");
         }
     }
 }
