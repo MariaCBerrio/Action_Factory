@@ -304,24 +304,21 @@ This request allows to delete get a list of all the existing suppliers
 - Device validation
 
 ### Technologies Used:
-- Java and Spring Framework for backend development.
-- SQL or NoSQL databases for information storage.
-- REST for web service creation.
-- UML diagrams for system design.
-- JPA for object-relational mapping.
-- Continuous Integration and Deployment with GitHub Actions and GCP or AWS.
-- JWT for user authentication and authorization.
-- Swagger for API documentation.
-- Design patterns and best practices for clean, maintainable, and scalable code.
-- Unit tests creation.
-- Cloud deployment.
-- README documentation.
-- GitHub project management.
+- **Back End Development:** Java 17 and Spring Boot Framework
+- **Database:** MySQL
+- **Continuous Integration:** GitHub Actions
+- **Continuous Deployment:** Railway 
+- **Api Documentation:** Swagger
+- **Integrated Development Environment (IDE):** IntelliJ
+- **API Testing and development platform:** Insomnia
+
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Used%20Technologies.png)
 
 ## Authors
-- Angie Guevara: https://www.linkedin.com/in/angie-guevara-developer/
-- Eimy Garcia: https://www.linkedin.com/in/eimy-garcia-backend/
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Teamwork.png)
 - Maria Camila Berrio: http://www.linkedin.com/in/maria-camila-berrio-alzate
+- Eimy Garcia: https://www.linkedin.com/in/eimy-garcia-backend/
+- Angie Guevara: https://www.linkedin.com/in/angie-guevara-developer/
 - David Herrera: https://www.linkedin.com/in/david-herrera-back-developer/
 
 
