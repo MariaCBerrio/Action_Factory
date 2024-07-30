@@ -1,5 +1,6 @@
-# Action Factory
+<h1 align="center">Action Factory</h1>
 
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Portada%20Action%20Factory.png)
 ## Project Context
 Action Factory is being developed by a dedicated team of four as part of our backend bootcamp at BeTek. Our goal is to revolutionize the device validation process for allied providers by creating a robust and automated system. This project not only serves as a practical application of our learning but also aims to deliver a real-world solution to streamline and enhance operational efficiency.
 
@@ -15,6 +16,7 @@ Action Factory seeks to revolutionize the validation process for devices from al
 - **Website**: Provider Website
 - **Industry Sector**: Provider Industry Sector
 - **Registration Date**: Provider Registration Date
+- **Employee Id**: Employee with coordinator role.
 
 ### Functionalities:
 1. **Creation and Update of Providers**: Only employees with the coordinator role can perform this action.
@@ -41,7 +43,7 @@ The system will also manage the employees of Action Factory, where employees can
 The core of our company is facilitating the validation and management of devices. The system must be capable of receiving CSV files sent by the provider containing device information.
 
 #### Device Validation:
-- Devices have the following characteristics: IMEI, STATUS, PROVIDER, SCORE, VALIDATION DATE.
+- Devices have the following characteristics: IMEI, STATUS, SCORE, VALIDATION_STATUS, VALIDATION DATE, SUPPLIER_ID, EMPLOYEE_ID.
 - Devices must be sorted in ascending order based on the IMEI when read from the CSV file.
 - Validate that the device provider exists in our database; if not, discard the validation.
 - Only validate devices with a status of "READY_TO_USE".
