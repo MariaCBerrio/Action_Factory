@@ -28,6 +28,9 @@ Action Factory seeks to revolutionize the validation process for devices from al
 ### Validation Management:
 The core of our company is facilitating the validation and management of devices. The system must be capable of receiving CSV files sent by the provider containing device information.
 
+## Flowchart Diagram
+![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Flowchart%20Diagram.jpg)
+
 ## Entity Relationship Model
 ![](https://github.com/MariaCBerrio/Action_Factory/blob/main/Action%20Factory%20Images/Entity-Relationship%20Model.jpg)
 
