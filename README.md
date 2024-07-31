@@ -371,4 +371,15 @@ Allows to upload a csv document of devices to the database, it must be charged a
 - Angie Guevara: https://www.linkedin.com/in/angie-guevara-developer/
 - David Herrera: https://www.linkedin.com/in/david-herrera-back-developer/
 
+## Acknowledgements
+
+We would like to extend our heartfelt gratitude to BeTek for the comprehensive training and invaluable guidance provided throughout our journey. The knowledge and skills acquired during the Back End training program have been instrumental in the development of Action Factory.
+
+### Discover BeTek
+
+If you are passionate about technology and eager to advance your career, we highly recommend exploring the educational opportunities offered by BeTek. Their programs are designed to equip you with the practical skills and knowledge needed to excel in the tech industry.
+
+Visit [BeTek](https://betek.la/) to learn more about their courses and how they can help you achieve your professional goals.
+
+Thank you, BeTek, for empowering us to make a difference through technology!
 
