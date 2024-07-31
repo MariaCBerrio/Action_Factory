@@ -108,7 +108,7 @@ public class DeviceService {
             // Verifica si el dispositivo tiene un proveedor asociado
             if (device.getSupplier() == null) {
                 logger.error("Device with IMEI: {} has no supplier", device.getImei());
-                device.setValidationStatus("Invalid");
+                device.setValidationStatus("INVALID");
                 invalidDeviceList.add(new InvalidDevice(device));
                 continue; // Pasa al siguiente dispositivo
             }
@@ -116,7 +116,7 @@ public class DeviceService {
             // Verifica si el proveedor existe
             if (!supplierRepository.existsById(device.getSupplier().getId())) {
                 logger.error("Supplier with ID {} does not exist.", device.getSupplier().getId());
-                device.setValidationStatus("Invalid");
+                device.setValidationStatus("INVALID");
                 invalidDeviceList.add(new InvalidDevice(device));
                 throw new ApiRequestException("Supplier with ID " + device.getSupplier().getId() + " does not exist.");
             }
@@ -124,14 +124,14 @@ public class DeviceService {
             // Verifica el estado del dispositivo
             if (device.getStatus() == null) {
                 logger.warn("Device with IMEI: {} has null status", device.getImei());
-                device.setValidationStatus("Invalid");
+                device.setValidationStatus("INVALID");
                 invalidDeviceList.add(new InvalidDevice(device));
                 continue; // Pasa al siguiente dispositivo
             }
 
             if (!device.getStatus().equalsIgnoreCase("READY_TO_USE")) {
                 logger.warn("The device with IMEI: {} hasn't a status equal to READY_TO_USE", device.getImei());
-                device.setValidationStatus("Invalid");
+                device.setValidationStatus("INVALID");
                 invalidDeviceList.add(new InvalidDevice(device));
                 continue; // Pasa al siguiente dispositivo
             }
@@ -139,7 +139,7 @@ public class DeviceService {
             // Verifica el puntaje del dispositivo
             if (device.getScore() < 60) {
                 logger.warn("The device with IMEI: {} has a score less than or equal to 60", device.getImei());
-                device.setValidationStatus("Invalid");
+                device.setValidationStatus("INVALID");
                 invalidDeviceList.add(new InvalidDevice(device));
                 continue; // Pasa al siguiente dispositivo
             }
@@ -149,11 +149,11 @@ public class DeviceService {
             String reverseImeiStr = new StringBuilder(imeiStr).reverse().toString();
             if (imeiStr.equals(reverseImeiStr)) {
                 logger.warn("The device with IMEI: {} has an IMEI palindrome", device.getImei());
-                device.setValidationStatus("Invalid");
+                device.setValidationStatus("INVALID");
                 invalidDeviceList.add(new InvalidDevice(device));
             } else {
                 logger.info("The device with IMEI: {} has been successfully validated", device.getImei());
-                device.setValidationStatus("Valid");
+                device.setValidationStatus("VALID");
                 validDeviceList.add(new ValidDevice(device));
             }
         }
@@ -227,8 +227,15 @@ public class DeviceService {
     }
 
     public void deleteAllDevices() {
-        validDeviceRepository.deleteAll();
-        invalidDeviceRepository.deleteAll();;
-        deviceRepository.deleteAll();
+        try {
+            validDeviceRepository.deleteAll();
+            invalidDeviceRepository.deleteAll();
+            deviceRepository.deleteAll();
+            logger.info("All devices, valid devices, and invalid devices have been deleted.");
+        } catch (Exception e) {
+            logger.error("Error deleting devices: ", e);
+            throw new RuntimeException("Error deleting devices", e);
+        }
     }
+
 }

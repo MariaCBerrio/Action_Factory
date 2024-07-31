@@ -54,31 +54,37 @@ public class DeviceServiceTest {
 
     @Test
     public void testUploadDevicesEmptyFile() {
-        MockMultipartFile file = new MockMultipartFile("file", new byte[0]);
+        // Crear un archivo vacío
+        MockMultipartFile file = new MockMultipartFile("file", "empty.csv", "text/csv", new byte[0]);
 
+        // Verificar que se lanza la excepción esperada
         ApiRequestException exception = assertThrows(ApiRequestException.class, () -> {
             deviceService.uploadDevices(file);
         });
 
+        // Verificar que el mensaje de la excepción es el esperado
         assertEquals("No file selected!", exception.getMessage());
     }
 
-
-
     @Test
     public void testUploadDevicesInvalidFormat() {
+        // Crear un archivo con contenido no CSV
         MockMultipartFile file = new MockMultipartFile("file", "test.csv", "text/csv", "test".getBytes());
 
+        // Simular el comportamiento de CsvUtility.hasCsvFormat
         try (MockedStatic<CsvUtility> mockedCsvUtility = mockStatic(CsvUtility.class)) {
             mockedCsvUtility.when(() -> CsvUtility.hasCsvFormat(file)).thenReturn(false);
 
+            // Verificar que se lanza la excepción esperada
             ApiRequestException exception = assertThrows(ApiRequestException.class, () -> {
                 deviceService.uploadDevices(file);
             });
 
+            // Verificar que el mensaje de la excepción es el esperado
             assertEquals("Please upload a CSV file!", exception.getMessage());
         }
     }
+
 
     @SuppressWarnings("unchecked")
     @Test

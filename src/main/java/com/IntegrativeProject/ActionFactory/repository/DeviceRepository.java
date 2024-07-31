@@ -11,4 +11,6 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
     Optional<Device> findByImei(Long imei);
 
     List<Device> findBySupplierId(Long supplierId);
+
+    List<Device> findByValidationStatus(String validationStatus);
 }

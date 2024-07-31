@@ -1,15 +1,15 @@
 
-¡10:59:32.578 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789012345 will enter verification process.
+¡06:49:16.825 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789012345 will enter verification process.
 
-¡10:59:32.588 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789098765 will enter verification process.
+¡06:49:16.836 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 123456789098765 will enter verification process.
 
-¡10:59:32.589 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 987654321098765 will enter verification process.
+¡06:49:16.836 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- Device with IMEI 987654321098765 will enter verification process.
 
-…10:59:32.590 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
+…06:49:16.836 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
 
-…10:59:32.592 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
+…06:49:16.836 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
 
-…10:59:32.593 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
-¥10:59:32.634 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789012345 has been successfully validated
-ª10:59:32.636 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789098765 has a score less than or equal to 60
-˜10:59:32.637 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 12345654321 has an IMEI palindrome
+…06:49:16.836 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- Employee with ID null has null status
+¥06:49:16.876 [Test worker] INFO com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789012345 has been successfully validated
+ª06:49:16.894 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 123456789098765 has a score less than or equal to 60
+˜06:49:16.896 [Test worker] WARN com.IntegrativeProject.ActionFactory.service.DeviceService -- The device with IMEI: 12345654321 has an IMEI palindrome
