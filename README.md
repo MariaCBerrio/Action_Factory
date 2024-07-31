@@ -60,18 +60,7 @@ The core of our company is facilitating the validation and management of devices
 
 ### Installation Instructions:
 1. Clone the project using the URL: [](https://github.com/MariaCBerrio/Action_Factory.git)
-2. Create a SQL database using Workbench, you can use the name `action_factory`.
-3. Open the project and locate the `application.properties` file in `src/main/resources`. Update it as follows:
-    ```
-    spring.application.name=ActionFactory
-
-    # MySQL Configuration
-    spring.datasource.url=jdbc:mysql://localhost:3306/action_factory
-    spring.datasource.username=root
-    spring.datasource.password=<YourPassword>
-    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-    ```
-4. Ensure the `spring.datasource.username` and `spring.datasource.password` are correct.
+2. Open the project using insominia and load the gradle file.
 5. Navigate to the `ActionFactoryApplication` class located in `src/main/java/ActionFactoryApplication` and run it.
 6. Send requests using Insomnia or Postman.
 
